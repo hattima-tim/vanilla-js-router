@@ -19,7 +19,12 @@ const nav = document.querySelector("#nav");
 const renderContent = (route) => (app.innerHTML = routes[route].content);
 
 const navigate = (e) => {
-  const route = e.target.pathname;
+  let route;
+  if (e.target.pathname === "/") {
+    route = e.target.pathname;
+  } else {
+    route = e.target.pathname.slice(1);
+  }
   window.history.pushState({}, "", route);
   renderContent(route);
 };
